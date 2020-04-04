@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="col-12">
+            <a href="{% url 'page:page_create' %}" role="button" class="btn btn-outline-danger">Page -
+                Create</a><br>
+            <hr>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">PK</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Slug</th>
+                    <th scope="col">Cover Image</th>
+                    <th scope="col">Content</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in items %}
+                    <tr>
+                        <th scope="row">{{ item.pk }}</th>
+                        <td>{{ item.title }}</td>
+                        <td>{{ item.slug }}</td>
+                        {% if item.cover_image %}
+                            <td><img src="{{ item.cover_image.url }}" class="w-100" alt=""></td>
+                        {% else %}
+                            <td>Görsel Yok</td>
+                        {% endif %}
+                        <td>{{ item.content }}</td>
+                        <td>{{ item.status }}</td>
+                        <td><a href="{% url 'page:page_update' item.pk %}" role="button"
+                               class="btn btn-primary">Edit</a>
+                        </td>
+                        <td><a href="{% url 'page:page_delete' item.pk %}" role="button"
+                               class="btn btn-danger">Sil</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

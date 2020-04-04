@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="col-12">
+            {% for message in messages %}
+                <div class="alert alert-success">
+                    <strong>
+                        <a>{{ message }}</a>
+                    </strong>
+                </div>
+            {% endfor %}
+        </div>
+        <h2>{{ title }}</h2>
+        <a href="{% url 'page:carousel_list' %}" class="btn btn-outline-info">Carousel List</a>
+        <hr>
+
+        <form class="contact-form row" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="col-md-12">
+                <div class="center-holder">
+                    <button type="submit" class="btn btn-primary">Gönder</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+{% endblock %}

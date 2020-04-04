@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="col-12">
+            <a href="{% url 'page:carousel_list' %}" role="button" class="btn btn-outline-danger">Carousel -
+                List</a><br><br><br>
+            <a href="{% url 'page:page_list' %}" role="button" class="btn btn-outline-success">Carousel -
+                List</a><br>
+        </div>
+    </div>
+{% endblock %}
